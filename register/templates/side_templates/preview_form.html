@@ -1,0 +1,47 @@
+<style>
+  .container {
+    width: 35%;
+    border: 1px solid black;
+    padding-left: 7px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  .user, .city_name{
+   margin-bottom: 3px; 
+  }
+
+</style>
+
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button class="STYLE_ME" type="submit">Вийти з аккаунту</button>
+</form>
+
+<form method="post" action="{% url 'create_form' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button class="STYLE_ME" type="submit">Змінити місто</button>
+</form>
+<div class="container">
+  <h3>
+<div class="block user">Ваше ім'я: {{ full_username }}</div>
+<div class="block city_name">Місто: {{city.name}}</div>
+</h3>
+<h5>
+<div class="block l1">Перший рівень: {{city.first_layer}}</div>
+<div class="block l2">Другий рівень: {{city.second_layer}}</div>
+<div class="block l3">Третій рівень: {{city.third_layer}}</div>
+<div class="block l3">Четвертий рівень: {{city.fourth_layer}}</div>
+<div class="block l3">Категорія: {{city.category}}</div>
+</h5>
+</div>
+<form method="post" action="{% url 'save_form' %}">
+    {% csrf_token %}
+      <input style="display: none;" name="city_name" value="{{city.id}}"/>
+    <button class="city" type="submit">Зберегти</button>
+  </form>

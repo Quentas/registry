@@ -1,0 +1,26 @@
+{% load socialaccount %}
+{% providers_media_js %}
+
+<h1>
+  Ваша форма відправлена.
+  </h1>
+<h3>Адміністратор перегляне її та підтвердить найближчим часом</h3>
+
+
+<form method="post" action="{% url 'create_form' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button class="STYLE_ME" type="submit">Змінити місто</button>
+</form>
+
+
+
+<form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    {% endif %}
+    <button class="STYLE_ME" type="submit">Вийти з аккаунту</button>
+</form>

@@ -23,5 +23,5 @@ from django.urls import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    #path('121221e21e/', include('users.urls')),
+    path('', include('users.urls')),
 ]

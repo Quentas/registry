@@ -1,0 +1,62 @@
+{% load socialaccount %}
+{% providers_media_js %}
+
+<style>
+    .city{
+        background-color: transparent;
+        border: none;
+        font-size: 125%;
+        text-align: left;
+        }
+
+
+</style>
+
+
+<form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    {% endif %}
+    <button class="STYLE_ME" type="submit">Вийти з аккаунту</button>
+</form>
+
+<form method="post" action="{% url 'create_form' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button class="STYLE_ME" type="submit">Змінити місто</button>
+</form>
+
+
+{% if searched %}
+    <h2 style="background-color: bisque; width: 25%;">Ви шукали "{{ searched }}"</h2>
+    <br/>
+    {% for city in cities %}
+        <div style="
+        width:35%;
+        border: black 1px solid;
+        padding-left: 7px;
+        padding-right: 7px;
+        ">
+        <form method="post" action="{% url 'preview_form' %}">
+            {% csrf_token %}
+              <input style="display: none;" name="city_name" value="{{city.id}}"/>
+            <button class="city" type="submit">{{city.name}}</button>
+          </form>
+        <h5>
+        Перший рівень: {{ city.first_layer }}<br/>
+        Другий рівень: {{ city.second_layer }}<br/>
+        Третій рівень: {{ city.third_layer }}<br/>
+        Четвертий рівень: {{ city.fourth_layer }}<br/>
+        Категорія: {{ city.category }}<br/>
+        </h5>
+        </div>
+        <br/>
+    {% endfor %}
+
+{% else %}
+    <h1>Ви не вказали назву міста</h1>
+{% endif %}
+

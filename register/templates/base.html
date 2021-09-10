@@ -1,0 +1,54 @@
+{% load socialaccount %}
+{% providers_media_js %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %} Site name {% endblock %}</title>
+
+</head>
+<body>
+    <style>
+        .btn {
+            width: 10%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            margin: 5px 0;
+            opacity: 0.85;
+            display: inline-block;
+            font-size: 17px;
+            line-height: 20px;
+            text-decoration: none; 
+        }
+
+        input:hover,
+        .btn:hover {
+        opacity: 1;
+        }
+
+        .fb {
+        background-color: #3B5998;
+        color: white;
+        }
+
+        .google {
+        background-color: #dd4b39;
+        color: white;
+        }
+    </style>
+    <header>
+            <a href="{% provider_login_url 'facebook' method='js_sdk' %}" class="fb btn">
+              <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+            </a>
+            
+            <a href="{% provider_login_url 'google' method='js_sdk' %}" class="google btn">
+              <i class="fa fa-google fa-fw"></i> Login with Google+
+            </a>
+          </div>
+    </header>
+{% block content %}
+    <h1>Увійдіть в свій аккаунт</h1>
+{% endblock %}
+
+</body>
+</html>

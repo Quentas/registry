@@ -1,0 +1,24 @@
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+<form method="post" action="{% url 'account_logout' %}">
+  {% csrf_token %}
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <button class="STYLE_ME" type="submit">Вийти з аккаунту</button>
+</form>
+
+<h1>Вітаємо, {{ full_username }}</h1>
+
+<h2>
+  Введіть назву міста великими буквами:
+</h2>
+<form method="post" action="{% url 'choose_city' %}">
+  {% csrf_token %}
+    <input type="search" placeholder="Пошук міста" aria-label="Search" name="searched"/>
+  <button class="STYLE_ME" type="submit">Пошук</button>
+</form>
+
+
