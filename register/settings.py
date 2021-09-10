@@ -11,7 +11,7 @@ load_dotenv(dotenv_path=dotenv_path)
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 #SECRET_KEY = 'django-insecure-8umtq%!2-ojbpi$am5c5bynia8!-8oaewc^fb_f6rb-ct!2j80'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='SC6OdlaZTKjSKytPy0b0WzLwI9OUpYYY47GVTr7kH9NDUeoewnANBks16PF8')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
