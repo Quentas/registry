@@ -13,7 +13,7 @@ def upload_from_file():
     '''Moves all entries from json file to users_city table
     '''
     file = 'cities.json'
-    with open(file, 'r', encoding ="utf8") as f:
+    with open(os.path.join(sys.path[0], file), 'r', encoding ="utf8") as f:
         obj = json.loads(f.read())
         for i in obj:
             city_name = i['Назва об\'єкта українською мовою']
