@@ -12,9 +12,7 @@ def ping(request):
 def upload_from_file():
     '''Moves all entries from json file to users_city table
     '''
-    currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-    parentdir = os.path.dirname(currentdir)
-    file = parentdir + '\\cities.json'
+    file = 'cities.json'
     with open(file, 'r', encoding ="utf8") as f:
         obj = json.loads(f.read())
         for i in obj:
