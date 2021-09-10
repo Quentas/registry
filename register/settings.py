@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
 ]
 
-SITE_ID = int(os.environ.get('SITE_ID'))
+SITE_ID = int(os.environ.get('SITE_ID', default=3))
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_REQUIRED = True
 
