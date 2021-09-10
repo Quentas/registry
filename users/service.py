@@ -22,7 +22,7 @@ def upload_from_file():
             layer3 = i['Третій рівень']
             layer4 = i['Четвертий рівень']
             city_category = i['Категорія']
-            print(city_name, layer1, city_category)
+            print(layer1, city_name, city_category)
             City.objects.create(
                 name=city_name,
                 first_layer=layer1, 
