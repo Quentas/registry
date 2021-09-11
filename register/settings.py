@@ -27,10 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'django.contrib.sites',
-
-    'users',
 
     'whitenoise',
 
@@ -40,6 +37,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
 
+    'users',
 ]
 
 SITE_ID = int(os.environ.get('SITE_ID', default=2))
@@ -59,6 +57,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MIGRATION_MODULES = {
+    'account' : 'users.account_migrations',
+    'socialaccount': 'users.socialaccount_migrations',
+    'sites' : 'users.sites_migrations',
+}
 
 ROOT_URLCONF = 'register.urls'
 
