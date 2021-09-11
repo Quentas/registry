@@ -3,7 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{% block title %} Site name {% endblock %}</title>
+	<title>
+    {% block title %}
+      {% csrf_token %}
+      Testing application
+    {% endblock %}</title>
 
 </head>
 <body>
@@ -47,6 +51,7 @@
           </div>
     </header>
 {% block content %}
+{% csrf_token %}
     <h1>Увійдіть в свій аккаунт</h1>
 {% endblock %}
 
