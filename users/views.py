@@ -23,10 +23,8 @@ def base_page(request):
 def create_form(request):
     if request.user.is_anonymous:
         return redirect('base_page')
-    city = City.objects.get(id=9)
     full_username = SocialAccount.objects.get(user=request.user).extra_data['name']
     return render(request, 'side_templates/form.html', {
-        'city' : city,
         'full_username' : full_username
     })
 
