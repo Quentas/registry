@@ -44,6 +44,11 @@ SITE_ID = int(os.environ.get('SITE_ID', default=2))
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_REQUIRED = True
 #ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False
+
+
 
 # KOSTYL is needed to resolve problem, described in users.views
 KOSTYL = int(os.environ.get('KOSTYL', default=1))
